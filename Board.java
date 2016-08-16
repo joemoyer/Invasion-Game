@@ -52,21 +52,28 @@ public class Board extends JPanel implements ActionListener{
 	private void doDrawing(Graphics g) {
 
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.drawImage(background, 250, 250, null);
+		g2d.drawImage(background, Character.getX(), Character.getY(), null);
 		g2d.drawLine(2, 2, 100, 100);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		Character.move();
+		repaint();
 	}
 	
 	private class TAdapter implements KeyListener {
 
 		@Override
-		public void keyPressed(KeyEvent arg0) {
-			// TODO Auto-generated method stub
+		public void keyPressed(KeyEvent e) {
+			Character.keyPressed(e);
 			
 		}
 
 		@Override
-		public void keyReleased(KeyEvent arg0) {
-			// TODO Auto-generated method stub
+		public void keyReleased(KeyEvent e) {
+			Character.keyReleased(e);
 			
 		}
 
@@ -75,12 +82,6 @@ public class Board extends JPanel implements ActionListener{
 			// TODO Auto-generated method stub
 			
 		}
-		
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 }
